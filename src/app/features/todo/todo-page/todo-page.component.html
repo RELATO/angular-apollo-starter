@@ -1,0 +1,10 @@
+<base-template>
+  <ul>
+    <li *ngFor="let todo of todoList$ | async">
+      <app-todo-item [item]="todo"></app-todo-item>
+    </li>
+  </ul>
+
+  <input type="text" [(ngModel)]="newTodo" />
+  <button (click)="add()">Send</button>
+</base-template>
