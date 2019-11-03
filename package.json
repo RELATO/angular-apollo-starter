@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "json-server --watch server/db.json --delay 600 --middlewares server/exists.js"
+    "server": "json-server --watch server/db.json --routes routes.json --delay 600 --middlewares server/exists.js"
   },
   "private": true,
   "dependencies": {

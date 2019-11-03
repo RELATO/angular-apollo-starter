@@ -8,7 +8,6 @@ import { Observable, Subject } from 'rxjs';
 import { Client } from '../../../../store/client/models/client.model';
 
 import * as fromClient from '../../../../store/client';
-import { ClientItemActionTypes } from '../../../../store/client';
 import { select, Store } from '@ngrx/store';
 import { GridPayload } from '../../../../shared/models/grid.payload';
 import { MatDialog } from '@angular/material';
@@ -49,8 +48,8 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
     actions$
       .pipe(
         ofType(
-          ClientItemActionTypes.AddClientSuccess,
-          ClientItemActionTypes.UpdateClientSuccess
+          fromClient.ClientItemActionTypes.AddClientSuccess,
+          fromClient.ClientItemActionTypes.UpdateClientSuccess
         ),
         takeUntil(this.destroyed$),
         tap(() => {
