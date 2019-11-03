@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tuto-angular-store": {
+    "angular-apollo-store": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tuto-angular-store",
+            "outputPath": "dist/angular-apollo-store",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,18 +72,23 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tuto-angular-store:build"
+            "browserTarget": "angular-apollo-store:build",
+            "hmrWarning": false
           },
           "configurations": {
             "production": {
-              "browserTarget": "tuto-angular-store:build:production"
+              "browserTarget": "angular-apollo-store:build:production"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "angular-apollo-store:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tuto-angular-store:build"
+            "browserTarget": "angular-apollo-store:build"
           }
         },
         "test": {
@@ -116,11 +121,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tuto-angular-store:serve"
+            "devServerTarget": "angular-apollo-store:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tuto-angular-store:serve:production"
+              "devServerTarget": "angular-apollo-store:serve:production"
             }
           }
         }
