@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
+// import { AppComponent } from './app.component';
+import { AppComponent } from './core/pages/bootstrap/app.component';
+import { CoreModule } from './core/core.module';
+import { HomepageModule } from './pages/homepage/homepage.module';
 
 import { ComponentsModule } from './features/features.module';
 import { StoreModule } from './store/store.module';
@@ -11,7 +14,7 @@ import { GraphQLModule } from './graphql.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,9 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     StoreModule,
     GraphQLModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule.forRoot(),
+    HomepageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

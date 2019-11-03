@@ -1,0 +1,29 @@
+<div class="solution-container">
+  <div>
+    Array length: <b>{{ length }}</b>
+    <p>
+      <mat-slider [(ngModel)]="length" [min]="1" [max]="1e5"></mat-slider>
+    </p>
+  </div>
+
+  <div>
+    Remove number: <b>{{ removedNumber }}</b>
+    <p>
+      <mat-slider [(ngModel)]="removedNumber" [min]="1" [max]="length"></mat-slider>
+    </p>
+  </div>
+
+
+  <mat-radio-group [(ngModel)]="solution" (ngModelChange)="result = null">
+    <mat-radio-button value="solution1">Solution 1</mat-radio-button>
+    <mat-radio-button value="solution2">Solution 2</mat-radio-button>
+  </mat-radio-group>
+
+  <p>
+    <button mat-stroked-button color="primary" (click)="findMissedNumber()">
+      Find missed number
+    </button>
+
+    <span class="result" *ngIf="result !== null">Result: <b>{{ result }}</b></span>
+  </p>
+</div>

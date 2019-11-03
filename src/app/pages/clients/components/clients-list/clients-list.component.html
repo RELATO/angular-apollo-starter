@@ -1,0 +1,70 @@
+<div class="grid-container">
+  <ngx-datatable
+    class="material striped"
+
+    [rows]="clients"
+
+    [loadingIndicator]="loading"
+
+    [columnMode]="'force'"
+    [reorderable]="false"
+
+    [headerHeight]="40"
+    [footerHeight]="50"
+    [rowHeight]="50"
+
+    [scrollbarV]="true"
+    [virtualization]="false"
+
+    [externalSorting]="true"
+    [sorts]="[{prop: 'id'}]"
+    (sort)="onSort($event)"
+
+    [externalPaging]="true"
+    [count]="count"
+    [offset]="offset"
+    [limit]="10"
+    (page)='onPaginate($event)'
+
+    (activate)="onActive($event)"
+  >
+    <ngx-datatable-column name="Id" [maxWidth]="50">
+      <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Company">
+      <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Address">
+      <ng-template let-value="value" ngx-datatable-cell-template>{{ value}}</ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Name">
+      <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Email">
+      <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Phone">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        {{ value | phone }}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [maxWidth]="90">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button mat-icon-button (click)="editItem.emit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="onItemDeleted(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>

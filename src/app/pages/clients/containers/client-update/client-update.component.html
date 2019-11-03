@@ -1,0 +1,9 @@
+<app-client-form
+  [clientId]="clientId$ | async"
+  [client]="client$ | async"
+
+  [pending]="pending$ | async"
+  [error]="error$ | async"
+
+  (submitted)="onSubmit($event)"
+></app-client-form>

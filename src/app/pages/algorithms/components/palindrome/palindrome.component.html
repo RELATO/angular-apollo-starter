@@ -1,0 +1,20 @@
+<div class="solution-container">
+  <mat-form-field class="full-width">
+    <textarea matInput
+              cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
+              [(ngModel)]="text"
+              placeholder="Text">
+    </textarea>
+  </mat-form-field>
+
+  <mat-radio-group [(ngModel)]="solution" (ngModelChange)="result = null">
+    <mat-radio-button value="solution1">Solution 1</mat-radio-button>
+    <mat-radio-button value="solution2">Solution 2</mat-radio-button>
+  </mat-radio-group>
+
+  <p>
+    <button mat-stroked-button color="primary" (click)="validate()">Check</button>
+
+    <span class="result" *ngIf="result !== null">Result: <b>{{ result }}</b></span>
+  </p>
+</div>

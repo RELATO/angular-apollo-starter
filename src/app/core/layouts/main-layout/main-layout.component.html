@@ -1,0 +1,6 @@
+<app-header></app-header>
+
+<main class="main-content">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <ng-content *ngIf="!loading"></ng-content>
+</main>

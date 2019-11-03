@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>
+  {{ client.company }}
+</h1>
+<div mat-dialog-content>
+  <p>
+    <span>Address:</span>
+    {{ client.address }}
+  </p>
+
+  <h3>Contact</h3>
+
+  <p>
+    <span>Name:</span>
+    {{ client.name }}
+  </p>
+
+  <p>
+    <span>Email:</span>
+    <a [href]="client.emailLink">{{ client.email }}</a>
+  </p>
+
+  <p>
+    <span>Phone:</span>
+    <a [href]="client.telLink">{{ client.phone | phone }}</a>
+
+  </p>
+
+  <h3>Description</h3>
+
+  <p>
+    {{ client.description }}
+  </p>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</div>
