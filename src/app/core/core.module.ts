@@ -11,8 +11,7 @@ import { ForbiddenPageComponent } from './pages/forbidden-page/forbidden-page.co
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BaseInterceptor } from '@core/interceptors/base.interceptor';
-
+import { BaseInterceptor } from '../core/interceptors/base.interceptor';
 
 export const COMPONENTS = [
   AppComponent,
@@ -21,16 +20,11 @@ export const COMPONENTS = [
   MainLayoutComponent,
 
   NotFoundPageComponent,
-  ForbiddenPageComponent
+  ForbiddenPageComponent,
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-
-    MaterialModule,
-  ],
+  imports: [CommonModule, RouterModule, MaterialModule],
   declarations: COMPONENTS,
   exports: COMPONENTS,
 })
@@ -42,7 +36,7 @@ export class CoreModule {
         {
           provide: HTTP_INTERCEPTORS,
           useClass: BaseInterceptor,
-          multi: true
+          multi: true,
         },
       ],
     };

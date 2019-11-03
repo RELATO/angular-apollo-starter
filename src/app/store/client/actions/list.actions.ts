@@ -1,7 +1,9 @@
 import { Action } from '@ngrx/store';
-import { ClientApiModel } from '@core/store/client/models/client.model';
-import { GridPayload, LoadGridSuccessPayload } from '../../../../shared/models/grid.payload';
-
+import { ClientApiModel } from 'src/app/store/client/models/client.model';
+import {
+  GridPayload,
+  LoadGridSuccessPayload,
+} from '../../../shared/models/grid.payload';
 
 export enum ClientListActionTypes {
   LoadClients = '[Clients] Load',
@@ -16,29 +18,25 @@ export enum ClientListActionTypes {
 export class SelectClient implements Action {
   readonly type = ClientListActionTypes.SelectClient;
 
-  constructor(public payload: number) {
-  }
+  constructor(public payload: number) {}
 }
 
 export class LoadClients implements Action {
   readonly type = ClientListActionTypes.LoadClients;
 
-  constructor(public gridInfo: GridPayload) {
-  }
+  constructor(public gridInfo: GridPayload) {}
 }
 
 export class LoadClientsSuccess implements Action {
   readonly type = ClientListActionTypes.LoadClientsSuccess;
 
-  constructor(public payload: LoadGridSuccessPayload<ClientApiModel>) {
-  }
+  constructor(public payload: LoadGridSuccessPayload<ClientApiModel>) {}
 }
 
 export class LoadClientsFailure implements Action {
   readonly type = ClientListActionTypes.LoadClientsFailure;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 ////////////

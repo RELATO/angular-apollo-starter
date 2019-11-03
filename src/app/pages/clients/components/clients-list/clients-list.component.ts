@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Client } from '../../../../core/store/client/models/client.model';
+import { Client } from '../../../../store/client/models/client.model';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { GridPayload } from '../../../../shared/models/grid.payload';
 

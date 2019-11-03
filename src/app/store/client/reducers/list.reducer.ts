@@ -1,7 +1,10 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Client } from '@core/store/client/models/client.model';
-import { ClientActionTypes, ClientItemActionTypes, ClientListActionTypes } from '@core/store/client/actions';
-
+import { Client } from 'src/app/store/client/models/client.model';
+import {
+  ClientActionTypes,
+  ClientItemActionTypes,
+  ClientListActionTypes,
+} from 'src/app/store/client/actions';
 
 export interface ClientListState extends EntityState<Client> {
   isLoading: boolean;
@@ -14,11 +17,9 @@ export interface ClientListState extends EntityState<Client> {
   sortDir: string;
 }
 
-
 export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>({
   selectId: (client: Client) => client.id,
 });
-
 
 export const initialState: ClientListState = adapter.getInitialState({
   isLoading: false,
@@ -28,13 +29,14 @@ export const initialState: ClientListState = adapter.getInitialState({
   offset: 0,
 
   sortProp: 'id',
-  sortDir: 'asc'
+  sortDir: 'asc',
 });
 
-
-export function clientListReducer(state = initialState, action: ClientActionTypes): ClientListState {
+export function clientListReducer(
+  state = initialState,
+  action: ClientActionTypes
+): ClientListState {
   switch (action.type) {
-
     case ClientListActionTypes.LoadClients: {
       return {
         ...state,
@@ -47,7 +49,7 @@ export function clientListReducer(state = initialState, action: ClientActionType
       return adapter.addMany(action.payload.data as Client[], {
         ...adapter.removeAll(state),
         isLoading: false,
-        count: action.payload.count
+        count: action.payload.count,
       });
     }
 
@@ -58,7 +60,7 @@ export function clientListReducer(state = initialState, action: ClientActionType
     case ClientListActionTypes.SelectClient: {
       return {
         ...state,
-        selectedClientId: action.payload
+        selectedClientId: action.payload,
       };
     }
 
@@ -66,7 +68,6 @@ export function clientListReducer(state = initialState, action: ClientActionType
       return state;
   }
 }
-
 
 export const getIsLoading = (state: ClientListState) => state.isLoading;
 

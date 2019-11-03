@@ -1,9 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Client } from '../../../../core/store/client/models/client.model';
+import { Client } from '../../../../store/client/models/client.model';
 
-import * as fromClient from '../../../../core/store/client';
-import { ClientItemActionTypes } from '../../../../core/store/client';
+import * as fromClient from '../../../../store/client';
+import { ClientItemActionTypes } from '../../../../store/client';
 import { select, Store } from '@ngrx/store';
 import { GridPayload } from '../../../../shared/models/grid.payload';
 import { MatDialog } from '@angular/material';
@@ -14,7 +19,6 @@ import { Actions, ofType } from '@ngrx/effects';
 import { takeUntil, tap } from 'rxjs/operators';
 import { ClientDetailsComponent } from '../../components/client-details/client-details.component';
 
-
 @Component({
   selector: 'app-clients',
   templateUrl: './clients-page.component.html',
@@ -22,33 +26,42 @@ import { ClientDetailsComponent } from '../../components/client-details/client-d
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientsPageComponent implements OnInit, OnDestroy {
-  clients$: Observable<Client[]> = this.store.pipe(select(fromClient.getAllClients));
+  clients$: Observable<Client[]> = this.store.pipe(
+    select(fromClient.getAllClients)
+  );
   clientsLoading$ = this.store.pipe(select(fromClient.getClientsIsLoading));
 
-  clientsCount$: Observable<number> = this.store.pipe(select(fromClient.getClientsCount));
-  clientsOffset$: Observable<number> = this.store.pipe(select(fromClient.getClientsOffset));
+  clientsCount$: Observable<number> = this.store.pipe(
+    select(fromClient.getClientsCount)
+  );
+  clientsOffset$: Observable<number> = this.store.pipe(
+    select(fromClient.getClientsOffset)
+  );
 
   private destroyed$ = new Subject<boolean>();
   private dialogRef = null;
 
-  constructor(private readonly store: Store<fromClient.State>,
-              public dialog: MatDialog,
-              actions$: Actions) {
-    actions$.pipe(
-      ofType(
-        ClientItemActionTypes.AddClientSuccess,
-        ClientItemActionTypes.UpdateClientSuccess
-      ),
-      takeUntil(this.destroyed$),
-      tap(() => {
-        this.dialogRef.close();
-        this.dialogRef = null;
-      })
-    ).subscribe();
+  constructor(
+    private readonly store: Store<fromClient.State>,
+    public dialog: MatDialog,
+    actions$: Actions
+  ) {
+    actions$
+      .pipe(
+        ofType(
+          ClientItemActionTypes.AddClientSuccess,
+          ClientItemActionTypes.UpdateClientSuccess
+        ),
+        takeUntil(this.destroyed$),
+        tap(() => {
+          this.dialogRef.close();
+          this.dialogRef = null;
+        })
+      )
+      .subscribe();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.destroyed$.next(true);
@@ -57,7 +70,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
 
   addItem(): void {
     this.dialogRef = this.dialog.open(ClientAddComponent, {
-      width: '450px'
+      width: '450px',
     });
   }
 
@@ -68,7 +81,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
   onItemSelected(client: Client) {
     this.dialog.open(ClientDetailsComponent, {
       width: '650px',
-      data: client
+      data: client,
     });
   }
 
@@ -76,7 +89,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
     this.store.dispatch(new fromClient.SelectClient(client.id));
 
     this.dialogRef = this.dialog.open(ClientUpdateComponent, {
-      width: '450px'
+      width: '450px',
     });
   }
 

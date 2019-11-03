@@ -3,23 +3,28 @@ import { environment } from '../../environments/environment';
 import * as TodoSelector from './todo/selectors';
 
 import todoReducer from './todo/reducer';
-import { routerReducer, RouterReducerState } from '@ngrx/router-store';
-import {
-  apolloReducer,
-} from 'apollo-angular-cache-ngrx';
+import * as fromList from './client/reducers/list.reducer';
+import * as fromItem from './client/reducers/item.reducer';
 
-export interface State {
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { apolloReducer } from 'apollo-angular-cache-ngrx';
+
+export interface GlobalState {
+  list: fromList.ClientListState;
+  item: fromItem.ClientItemState;
   todo: TodoSelector.State;
   router: RouterReducerState;
   apollo: any;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<GlobalState> = {
+  list: fromList.clientListReducer,
+  item: fromItem.clientItemReducer,
   todo: todoReducer,
   router: routerReducer,
-  apollo: apolloReducer
+  apollo: apolloReducer,
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production
+export const metaReducers: MetaReducer<GlobalState>[] = !environment.production
   ? []
   : [];

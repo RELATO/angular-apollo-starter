@@ -1,7 +1,11 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { Client } from '@core/store/client/models/client.model';
-
+import { Client } from 'src/app/store/client/models/client.model';
 
 @Component({
   selector: 'app-client-details',
@@ -10,10 +14,7 @@ import { Client } from '@core/store/client/models/client.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientDetailsComponent implements OnInit {
+  constructor(@Inject(MAT_DIALOG_DATA) public client: Client) {}
 
-  constructor(@Inject(MAT_DIALOG_DATA) public client: Client) {
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

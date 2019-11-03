@@ -8,8 +8,8 @@ import { MaterialModule } from '../../shared/material.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { CLIENT_EFFECTS } from '@core/store/client/effects';
-import { CLIENT_REDUCERS } from '@core/store/client/client.state';
+import { CLIENT_EFFECTS } from 'src/app/store/client/effects';
+import { CLIENT_REDUCERS } from 'src/app/store/client/client.state';
 import { ClientsListComponent } from './components/clients-list/clients-list.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ClientFormComponent } from './components/client-form/client-form.component';
@@ -20,7 +20,6 @@ import { ClientDetailsComponent } from './components/client-details/client-detai
 import { SharedModule } from '../../shared/shared.module';
 import { TextMaskModule } from 'angular2-text-mask';
 
-
 @NgModule({
   declarations: [
     ClientsPageComponent,
@@ -29,12 +28,12 @@ import { TextMaskModule } from 'angular2-text-mask';
     ClientAddComponent,
     ClientUpdateComponent,
     ClientFormComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
   ],
   entryComponents: [
     ClientAddComponent,
     ClientUpdateComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +48,6 @@ import { TextMaskModule } from 'angular2-text-mask';
 
     StoreModule.forFeature('clients', CLIENT_REDUCERS),
     EffectsModule.forFeature(CLIENT_EFFECTS),
-  ]
+  ],
 })
-export class ClientsModule {
-}
+export class ClientsModule {}

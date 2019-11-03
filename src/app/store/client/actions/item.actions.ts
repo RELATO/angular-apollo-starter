@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Client } from '@core/store/client/models/client.model';
-
+import { Client } from 'src/app/store/client/models/client.model';
 
 export enum ClientItemActionTypes {
   AddClient = '[Clients] Add Client',
@@ -21,64 +20,55 @@ export enum ClientItemActionTypes {
 export class AddClient implements Action {
   readonly type = ClientItemActionTypes.AddClient;
 
-  constructor(public payload: Client) {
-  }
+  constructor(public payload: Client) {}
 }
 
 export class AddClientSuccess implements Action {
   readonly type = ClientItemActionTypes.AddClientSuccess;
 
-  constructor(public payload: Client) {
-  }
+  constructor(public payload: Client) {}
 }
 
 export class AddClientFailure implements Action {
   readonly type = ClientItemActionTypes.AddClientFailure;
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 export class UpdateClient implements Action {
   readonly type = ClientItemActionTypes.UpdateClient;
 
-  constructor(public payload: Client) {
-  }
+  constructor(public payload: Client) {}
 }
 
 export class UpdateClientSuccess implements Action {
   readonly type = ClientItemActionTypes.UpdateClientSuccess;
 
-  constructor(public payload: Client) {
-  }
+  constructor(public payload: Client) {}
 }
 
 export class UpdateClientFailure implements Action {
   readonly type = ClientItemActionTypes.UpdateClientFailure;
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 export class DeleteClient implements Action {
   readonly type = ClientItemActionTypes.DeleteClient;
 
-  constructor(public payload: number) {
-  }
+  constructor(public payload: number) {}
 }
 
 export class DeleteClientSuccess implements Action {
   readonly type = ClientItemActionTypes.DeleteClientSuccess;
 
-  constructor(public payload: number) {
-  }
+  constructor(public payload: number) {}
 }
 
 export class DeleteClientFailure implements Action {
   readonly type = ClientItemActionTypes.DeleteClientFailure;
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 ////////////

@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { State } from 'src/app/store';
+import { GlobalState } from 'src/app/store';
 import { Todo } from 'src/app/store/todo/selectors';
 import { addTodo, loadTodo } from 'src/app/store/todo/actions';
 
 @Component({
   selector: 'app-todo-page',
   templateUrl: './todo-page.component.html',
-  styleUrls: ['./todo-page.component.less']
+  styleUrls: ['./todo-page.component.less'],
 })
 export class TodoPageComponent implements OnInit {
   todoList$: Observable<Todo[]> = this.store.select(state => state.todo.todos);
 
   newTodo = '';
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<GlobalState>) {}
 
   ngOnInit() {
     this.store.dispatch(loadTodo());

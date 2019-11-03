@@ -1,8 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Client } from '../../../../core/store/client/models/client.model';
+import { Client } from '../../../../store/client/models/client.model';
 import { EmailValidator } from '../../../../shared/form-validators/email.validator';
-
 
 @Component({
   selector: 'app-client-form',
@@ -34,22 +39,51 @@ export class ClientFormComponent {
   @Output() submitted = new EventEmitter<Client>();
 
   isPending: boolean;
-  mask = [/[1-9]/, ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', '-', ' ', /\d/, /\d/, /\d/, /\d/];
+  mask = [
+    /[1-9]/,
+    ' ',
+    '(',
+    /[1-9]/,
+    /\d/,
+    /\d/,
+    ')',
+    ' ',
+    /\d/,
+    /\d/,
+    /\d/,
+    ' ',
+    '-',
+    ' ',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+  ];
 
   form: FormGroup = new FormGroup({
     id: new FormControl(''),
-    company: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(100)])),
+    company: new FormControl(
+      '',
+      Validators.compose([Validators.required, Validators.maxLength(100)])
+    ),
     description: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    name: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(200)])),
-    email: new FormControl('', Validators.compose([
-      Validators.required, EmailValidator.validate, Validators.maxLength(200)
-    ])),
+    name: new FormControl(
+      '',
+      Validators.compose([Validators.required, Validators.maxLength(200)])
+    ),
+    email: new FormControl(
+      '',
+      Validators.compose([
+        Validators.required,
+        EmailValidator.validate,
+        Validators.maxLength(200),
+      ])
+    ),
     phone: new FormControl('', Validators.required),
   });
 
-  constructor() {
-  }
+  constructor() {}
 
   submit() {
     if (this.form.valid) {

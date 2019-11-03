@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '@core/base/base.service';
 import { map } from 'rxjs/operators';
-import { Client, ClientApiModel } from '@core/store/client/models/client.model';
-import { GridPayload } from '../../../../shared/models/grid.payload';
+import {
+  Client,
+  ClientApiModel,
+} from 'src/app/store/client/models/client.model';
+import { GridPayload } from '../../../shared/models/grid.payload';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClientService extends BaseService {
   getClientList(gridInfo: GridPayload) {
-    return this.gridRequest<ClientApiModel>('/clients', gridInfo.offset, gridInfo.sortProp, gridInfo.sortDir)
-      .pipe(
-        map(response => ({
-          ...response,
-          data: response.data.map(client => new Client(client))
-        }))
-      );
+    return this.gridRequest<ClientApiModel>(
+      '/clients',
+      gridInfo.offset,
+      gridInfo.sortProp,
+      gridInfo.sortDir
+    ).pipe(
+      map(response => ({
+        ...response,
+        data: response.data.map(client => new Client(client)),
+      }))
+    );
   }
 
   addClient(payload: Client): Observable<Client> {
