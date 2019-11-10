@@ -1,4 +1,4 @@
-<app-main-layout>
+<div>
   <h1 class="sub-header">
     Clients
     <button mat-stroked-button color="primary" (click)="addItem()">Add</button>
@@ -7,14 +7,11 @@
   <app-clients-list
     [clients]="clients$ | async"
     [loading]="clientsLoading$ | async"
-
     [count]="clientsCount$ | async"
     [offset]="clientsOffset$ | async"
-
     (selectItem)="onItemSelected($event)"
     (editItem)="onItemUpdate($event)"
     (deleteItem)="onItemDelete($event)"
-
     (reload)="onGridUpdate($event)"
   ></app-clients-list>
-</app-main-layout>
+</div>

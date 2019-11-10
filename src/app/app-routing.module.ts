@@ -9,7 +9,7 @@ import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
     canActivate: [AuthGuard],
   },
@@ -18,21 +18,21 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
   {
-    path: '',
+    path: 'home',
     component: HomepageComponent,
   },
   {
     path: 'todos',
     component: TodoPageComponent,
   },
-  {
-    path: 'clients',
-    loadChildren: './pages/clients/clients.module#ClientsModule',
-  },
-  {
-    path: 'algorithms',
-    loadChildren: './pages/algorithms/algorithms.module#AlgorithmsModule',
-  },
+  // {
+  //   path: 'clients',
+  //   loadChildren: './pages/clients/clients.module#ClientsModule',
+  // },
+  // {
+  //   path: 'algorithms',
+  //   loadChildren: './pages/algorithms/algorithms.module#AlgorithmsModule',
+  // },
 
   {
     path: '**',
