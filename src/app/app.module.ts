@@ -1,6 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { GestureConfig } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 // import { AppComponent } from './app.component';
@@ -11,22 +15,21 @@ import { HomepageModule } from './pages/homepage/homepage.module';
 import { ComponentsModule } from './features/features.module';
 import { StoreModule } from './store/store.module';
 import { GraphQLModule } from './graphql.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
     StoreModule,
     GraphQLModule,
-    BrowserAnimationsModule,
     CoreModule.forRoot(),
     HomepageModule,
   ],
-  providers: [],
+  providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

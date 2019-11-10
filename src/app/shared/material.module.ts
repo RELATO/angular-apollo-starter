@@ -11,9 +11,12 @@ import {
   MatProgressSpinnerModule,
   MatRadioModule,
   MatSliderModule,
-  MatTabsModule
+  MatTabsModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatMenuModule,
+  MatListModule,
 } from '@angular/material';
-
 
 const COMPONENTS = [
   MatButtonModule,
@@ -25,17 +28,16 @@ const COMPONENTS = [
   MatFormFieldModule,
   MatTabsModule,
   MatRadioModule,
-  MatSliderModule
+  MatSliderModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatMenuModule,
+  MatListModule,
 ];
-
 
 @NgModule({
   imports: COMPONENTS,
   exports: COMPONENTS,
-  providers: [
-    {provide: ErrorStateMatcher, useClass: MyErrorStateMatcher}
-  ]
+  providers: [{ provide: ErrorStateMatcher, useClass: MyErrorStateMatcher }],
 })
-
-export class MaterialModule {
-}
+export class MaterialModule {}
